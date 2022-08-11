@@ -40,7 +40,7 @@ fun main(){
         print("$i\n")
     }
 
-//    val conta = Conta()
+
 //    conta.titular = "Alex"
 //    conta.numero = 1000
 //    conta.saldo = 200.00
@@ -61,11 +61,17 @@ private fun testaCondicoes(saldo: Double) {
     }
 }
 
-class Conta {
-
-    private var titular = ""
-    private var numero = 0
-    private var saldo = 0.0
+class Conta (titular: String, numero: Int) { //Esse é o construtor primário. Devemos utilizar o construtor primário como padrão e o construtor secundario apenas caso queiramos enviar properties.
+    //Sempre devemos inicializar os atributos com "val", e, apenas caso precisemos alterar o valor desse atributo, devemos utilizar o "val".
+    var titular = ""
+    var numero = 0
+    var saldo = 0.0 //Isso é uma property.
+//        set(valor){ //Para alterarmos o valor interno da property, devemos utilizar o "field".
+//            field = valor
+//        }
+        private set //Se os atributos forem privados, não é obrigado deixarmos o "set" privado.
+                    //Assim, não devemos utilizar "getSaldo()", e sim, apenas o "saldo = valor", e essa
+                    //atributição apenas estará disponível dentro da classe "Conta".
 
     fun deposita(valor: Double): Boolean { //O tipo padrão do retorno de uma função é "Unit", mesmo que ela não tenha um "return".
         this.saldo += valor
@@ -73,13 +79,19 @@ class Conta {
         return true
     }
 
-    fun getTitular(): String {
+    //Esse é um construtor secundário.
+//    constructor(titular: String, numero: Int){ //Criando o método construtor.
+//        this.titular = titular
+//        this.numero = numero
+//    }
 
-        return this.getTitular()
-    }
-
-    fun setTitular(titular: String){
-
-        this.titular = titular
-    }
+//    fun getTitular(): String {
+//
+//        return this.getTitular()
+//    }
+//
+//    fun setTitular(titular: String){
+//
+//        this.titular = titular
+//    }
 }
