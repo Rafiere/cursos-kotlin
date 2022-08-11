@@ -1,3 +1,5 @@
+import java.time.LocalDate
+
 fun main(){
     //"val": O valor de uma variável não pode ser alterado.
     //"var": O valor de uma variável pode ser alterado.
@@ -37,6 +39,12 @@ fun main(){
     for(i in 5 downTo 1 step 2){
         print("$i\n")
     }
+
+//    val conta = Conta()
+//    conta.titular = "Alex"
+//    conta.numero = 1000
+//    conta.saldo = 200.00
+//    println(conta.titular)
 }
 
 private fun testaCondicoes(saldo: Double) {
@@ -50,5 +58,28 @@ private fun testaCondicoes(saldo: Double) {
         else -> {
             println("A conta é negativa")
         }
+    }
+}
+
+class Conta {
+
+    private var titular = ""
+    private var numero = 0
+    private var saldo = 0.0
+
+    fun deposita(valor: Double): Boolean { //O tipo padrão do retorno de uma função é "Unit", mesmo que ela não tenha um "return".
+        this.saldo += valor
+
+        return true
+    }
+
+    fun getTitular(): String {
+
+        return this.getTitular()
+    }
+
+    fun setTitular(titular: String){
+
+        this.titular = titular
     }
 }
